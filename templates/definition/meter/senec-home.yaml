@@ -33,7 +33,7 @@ render: |
     scale: -1
   soc:
     source: http
-    uri: http://{{ .host }}/lala.cgi
+    uri: https://{{ .host }}/lala.cgi
     method: POST
     headers:
     - content-type: application/json
