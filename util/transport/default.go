@@ -9,7 +9,7 @@ import (
 
 // Default returns an http.DefaultTransport as http.Transport with reduced dial timeout
 func Default() *http.Transport {
-	return &http.Transport{
+	t := &http.Transport{
 		Proxy: http.ProxyFromEnvironment,
 		DialContext: (&net.Dialer{
 			Timeout:   5 * time.Second, // reduced from 30s
@@ -21,6 +21,8 @@ func Default() *http.Transport {
 		TLSHandshakeTimeout:   10 * time.Second,
 		ExpectContinueTimeout: 1 * time.Second,
 	}
+	t.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+	return t
 }
 
 // InsecureTransport is an http.Transport with TLSClientConfig.InsecureSkipVerify enabled

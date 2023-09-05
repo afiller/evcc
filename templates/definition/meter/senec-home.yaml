@@ -15,7 +15,7 @@ render: |
     source: http
     unpack: hex
     decode: float32
-    uri: http://{{ .host }}/lala.cgi
+    uri: https://{{ .host }}/lala.cgi
     method: POST
     headers:
     - content-type: application/json
